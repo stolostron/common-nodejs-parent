@@ -1,9 +1,9 @@
 FROM registry.redhat.com/ubi8/ubi-minimal:latest
 
-ENV NODEJS_VERSION=12
+ENV NODEJS_VERSION=14
 COPY install-npm.sh install-npm.sh
 
-# To install nodejs:12 on ubi-minimal, we need to enable the module... which
+# To install nodejs:14 on ubi-minimal, we need to enable the module... which
 # is only possible through dnf. Instead of going through dnf, we can use
 # modularity in libdnf: https://fedoramagazine.org/building-smaller-container-images
 # We only want to install nodejs, so uninstall the rest
