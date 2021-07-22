@@ -1,4 +1,4 @@
-FROM registry.redhat.com/ubi8/ubi-minimal:latest
+FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
 ENV NODEJS_VERSION=14
 COPY install-npm.sh install-npm.sh
