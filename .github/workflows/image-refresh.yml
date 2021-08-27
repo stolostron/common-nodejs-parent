@@ -16,10 +16,15 @@ jobs:
       - uses: actions/checkout@v2
       - name: Update with current timestamp
         run: date +%F-%H-%M-%S > .trigger-ci
-      - name: Commit and push
-        run: |
-          git config --global user.name "arewm's actions"
-          git config --global user.email 'arewm@users.noreply.github.com'
-          git commit -am "Automated image refresh trigger"
-          git push
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4.9.2
+        with:
+          commit_message: "cronjob: Automated image refresh trigger"
+          commit_options: '--signoff'
+          file_pattern: .trigger-ci
+          skip_fetch: true
+          commit_user_name: GitHub Actions
+          commit_user_email: noreply@github.com
+          commit_author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          push_options: --force # Protected Branch
 
